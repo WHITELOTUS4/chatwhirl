@@ -1,0 +1,183 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #fff;
+}
+.flx{
+    display: flex;
+    flex-direction: row;
+}
+.join-in-box{
+    width: 40%;
+    background: #fff;
+    box-shadow: 0px 1px 4px 2px grey;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10% auto 0% auto;
+}
+.join-in-box h1{
+    font-size: 18px;
+    margin: 5px 0px;
+}
+.join-in-box .join-box{
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 10px 0px;
+}
+.join-in-box .join-box .user-img{
+    width: 5%;
+    overflow: hidden;
+}
+.join-in-box .join-box .user-img img{
+    position: relative;
+    width: 100%;
+    margin-top: 4px;
+}
+.join-in-box .join-box .user-name{
+    width: 90%;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+.join-in-box .join-box .user-name .join-id{
+    color: grey;
+    font-size: 12px;
+    font-weight: normal;
+}
+.join-in-box .join-box form label,.join-condition h3{
+    font-size: 14px;
+    font-weight: bold;
+    margin: 2px;
+}
+.join-in-box .join-box form small{
+    margin: 0px 0px 5px 0px;
+}
+.join-in-box .join-box form input{
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid grey;
+    color: grey;
+    outline: none;
+}
+.join-in-box .join-box form button{
+    display: none;
+    margin: 0px 0px auto 5px;
+    width: 95px;
+    height: 40px;
+    cursor: pointer;
+}
+.join-condition{
+    margin-top: 20px;
+}
+.join-condition ul li{
+    font-size: 14px;
+}
+.join-condition small i{
+    color: #007bff;
+    cursor: pointer;
+    font-style: normal;
+    text-decoration: underline;
+}
+.join-box #error-message{
+    margin: 8px 0px 2px 2px;
+    color: red;
+    display: none;
+}
+.chat-console{
+    width: 100%;
+    height: 100%;
+}
+.chat-console header{
+    width: 100%;
+    background: #007bffb6;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px 8px;
+}
+.chat-console header .flx img{
+    width: 30px;
+    height: 30px;
+}
+.chat-console header .flx h4{
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    padding: 6px 6px;
+}
+.chat-console header .flx span{
+    padding: 6px 2px;
+    color: whitesmoke;
+    font-size: 14px;
+}
+.chat-console #chat-box{
+    width: 100%;
+    height: 600px;
+    min-height: 80%;
+    max-height: 80%;
+    background: #dad9d97a;
+    overflow: auto;
+}
+.chat-console #chat-box .myMessage{
+    width: 20%;
+    max-width: 45%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: none;
+    margin: 10px 4px;
+}
+.chat-console #chat-box .myMessage .userDp{
+    width: 10%;
+}
+.chat-console #chat-box .myMessage .userDp img{
+    position: relative;
+    width: 90%;
+    margin: 5px auto;
+}
+.chat-console #chat-box .myMessage .messageStr{
+    width: 85%;
+    border-radius: 10px;
+    background: #007bff;
+    color: #fff;
+    font-size: 16px;
+    padding: 4px 8px;
+}
+.chat-console form input{
+    width: 80%;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin-left: 10%;
+    margin-top: 2%;
+    outline: none;
+}
+@media only screen and (max-width: 900px){
+    .join-in-box{
+        width: 90%;
+        margin: 20% auto 0% auto;
+    }
+    .join-in-box .join-box .user-img{
+        width: 10%;
+    }
+    .join-in-box .join-box form input{
+        margin-bottom: 4px;
+    }
+    .chat-console #chat-box{
+        width: 100%;
+        height: 500px;
+    }
+    .chat-console #chat-box .myMessage{
+        width: 60%;
+        max-width: 60%;
+    }
+    .chat-console form input{
+        width: 60%;
+        margin-top: 5%;
+    }
+}

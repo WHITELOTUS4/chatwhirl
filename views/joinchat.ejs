@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatWhirl</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../public/style.css"/>
+</head>
+<body>
+    <div class="join-in-box">
+        <h1>Join Chat</h1>
+        <div class="join-box flx">
+            <div class="user-img"><img src="../image/avater-7.png"alt="loading"/></div>
+            <div class="user-name">
+                <span>Krish</span>
+                <span class="join-id"> <%= ip %> </span>
+            </div>
+        </div>
+        <div class="join-box">
+            <form action="/chat" method="get">
+                <label for="key">Chat Code</label>
+                <small class="form-text text-muted">Ask your friends for the chat code, then enter it here.</small>
+                <span class="flx">
+                    <input type="text" class="form-controler" id="key" name="key" placeholder="Chat code" required onkeyup="checkChatcode();"/>
+                    <button type="submit" class="btn btn-primary" id="join-btn">Join Chat</button>
+                </span>
+                <small class="form-text" id="error-message">Chat codes are 5-7 characters including letters and numbers, and have no spaces or symbols</small>
+            </form>
+        </div>
+        <div class="join-condition">
+            <h3>To sign in with a chat code</h3>
+            <ul class="form-text">
+                <li>Use an authorised account</li>
+                <li>Use a class code with 5-7 letters or numbers, and no spaces or symbols</li>
+            </ul>
+            <small class="form-text text-muted">If you have trouble joining the chat, go to the <i>Help Center article</i></small>
+        </div>
+    </div>
+</body>
+<script>
+function checkChatcode(){
+    let condition = chatCodeTest(document.getElementById("key").value);
+    if(!condition){
+        document.getElementById('error-message').style.display = "block";
+    }else{
+        document.getElementById('error-message').style.display = "none";
+        if((document.getElementById("key").value).length == 7){
+            document.getElementById('join-btn').style.display = "block";
+        }else{
+            document.getElementById('join-btn').style.display = "none";
+        }
+    }
+}
+function chatCodeTest(input){
+    const requirements = [
+		{regex: /.{7,}/, index: 0},
+		{regex: /[0-9]/, index: 1},
+		{regex: /[a-z]/, index: 2},
+		{regex: /[A-Z]/, index: 3}
+	];
+    let requirementItem=0;
+	requirements.forEach((item)=>{
+		let isValid = item.regex.test(input);
+		if(isValid){
+			requirementItem++;	
+		}
+	});
+    if(requirementItem >= requirements.length){
+        if(input.length >= 5 && input.length <= 7){
+            return true;
+        }
+    }else{
+        return false;
+    }
+}
+</script>
+</html>

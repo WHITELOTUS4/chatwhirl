@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatWhirl</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../public/style.css"/>
+</head>
+<body>
+    <section class="chat-console">
+        <header>
+            <div class="flx">
+                <img src="../image/avater-7.png"alt="loading.."/>
+                <h4><%= roomName %></h4><span>(<%= key %>)</span>
+            </div>
+            <div class="btn btn-secondary"><i class="fa fa-share"></i> Share Link</div>
+        </header>
+        <div id="chat-box"></div>
+        <form id="chat-form">
+            <input type="text" class="form-controler" id="message" placeholder="Message here" required/>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-send"></i> Send</button>
+        </form>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.emit('join', '<%= key %>');
+
+        const chatForm = document.getElementById('chat-form');
+        const messageInput = document.getElementById('message');
+        const chatBox = document.getElementById('chat-box');
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = messageInput.value;
+            socket.emit('message', { key: '<%= key %>', message });
+            messageInput.value = '';
+        });
+
+        socket.on('message', (message) => {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add("myMessage");
+            messageElement.innerHTML = `
+            <div class="userDp">
+                <img src="../image/avater-7.png" alt="loading.."/>
+            </div>
+            <div class="messageStr">${message}</div>`;
+            chatBox.appendChild(messageElement);
+        });
+    </script>
+</body>
+</html>
