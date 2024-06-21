@@ -1,5 +1,4 @@
 # ChatWhirl 🌪️💬
----
 **ChatWhirl** is an easy and quick chat application designed to provide seamless real-time communication between users on different devices. Built with **Node.js** and **Socket.IO**, this open and free app ensures that your conversations are fast, secure, and forgotten as soon as you close the tab, keeping your chat data private.
 
 ## Why "ChatWhirl"? 🌪️
