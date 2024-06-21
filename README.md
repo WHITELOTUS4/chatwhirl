@@ -1,4 +1,5 @@
 # ChatWhirl 🌪️💬
+---
 **ChatWhirl** is an easy and quick chat application designed to provide seamless real-time communication between users on different devices. Built with **Node.js** and **Socket.IO**, this open and free app ensures that your conversations are fast, secure, and forgotten as soon as you close the tab, keeping your chat data private.
 
 ## Why "ChatWhirl"? 🌪️
@@ -29,13 +30,14 @@ For more information, check out our [website](https://kidKrishkode.github.io/Cha
 
 ## Contact 📬
 If you have any questions or feedback, feel free to contact the author:
-- **Email**: krishnendumitra24@.com
+- **Email**: krishnendumitra24@gmail.com
 - **GitHub**: [Krishnendu Mitra](https://github.com/Krishnendu-Mitra)
 
 Thank you for using **ChatWhirl**! We hope you enjoy your chat experience.
 
 ---
-#ChatApp #NodeJS #SocketIO #RealTime #OpenSource
+#ChatWhirl #ChatApp #NodeJS #SocketIO #RealTime #OpenSource #kidKrishkode #schoolProject #collegeProject #Backend
+#ejs #bootstrap #free
 
 ---
 
