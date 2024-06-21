@@ -4,6 +4,7 @@
   "description": "A simple chat application using Node.js, Express, Socket.io, and EJS",
   "main": "server.js",
   "scripts": {
+    "build": "ejs-cli views/ -o build/",
     "start": "node server.js"
   },
   "author": "Krishnendu Mitra",
