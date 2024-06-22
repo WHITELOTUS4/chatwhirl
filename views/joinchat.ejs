@@ -7,38 +7,53 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../public/style.css"/>
+    <link rel="icon" href="../image/logo.png"/>
 </head>
 <body>
-    <div class="join-in-box">
-        <h1>Join Chat</h1>
-        <div class="join-box flx">
-            <div class="user-img"><img src="../image/avater-7.png"alt="loading"/></div>
-            <div class="user-name">
-                <span>Krish</span>
-                <span class="join-id"> <%= ip %> </span>
+    <section class="join-chat">
+        <header>
+            <div class="flx">
+                <img src="../image/logo.png"alt="loading.."/>
+                <h4><%= APPName %></h4>
+            </div>
+            <div class="menu">
+                <img src="../image/avater-7.png" alt="loading.."/>
+                <div class="btn" onclick="invalid();"><i class="fa fa-ellipsis-v"></i></div>
+            </div>
+        </header>
+        <div class="join-in-box">
+            <h1>Join Chat</h1>
+            <div class="join-box flx">
+                <div class="user-img"><img src="../image/avater-7.png"alt="loading"/></div>
+                <div class="user-name">
+                    <span>Krish</span>
+                    <span class="join-id"> <%= ip %> </span>
+                </div>
+            </div>
+            <div class="join-box">
+                <form action="/chat" method="get">
+                    <label for="key">Chat Code</label>
+                    <small class="form-text text-muted">Ask your friends for the chat code, then enter it here.</small>
+                    <span class="flx">
+                        <input type="text" class="form-controler" id="key" name="key" placeholder="Chat code" required onkeyup="checkChatcode();"/>
+                        <button type="submit" class="btn btn-primary" id="join-btn">Join Chat</button>
+                    </span>
+                    <small class="form-text" id="error-message">Chat codes are 5-7 characters including letters and numbers, and have no spaces or symbols</small>
+                </form>
+            </div>
+            <div class="join-condition">
+                <h3>To sign in with a chat code</h3>
+                <ul class="form-text">
+                    <li>Use an authorised account</li>
+                    <li>Use a class code with 5-7 letters or numbers, and no spaces or symbols</li>
+                </ul>
+                <small class="form-text text-muted">If you have trouble joining the chat, go to the <i>Help Center article</i></small>
             </div>
         </div>
-        <div class="join-box">
-            <form action="/chat" method="get">
-                <label for="key">Chat Code</label>
-                <small class="form-text text-muted">Ask your friends for the chat code, then enter it here.</small>
-                <span class="flx">
-                    <input type="text" class="form-controler" id="key" name="key" placeholder="Chat code" required onkeyup="checkChatcode();"/>
-                    <button type="submit" class="btn btn-primary" id="join-btn">Join Chat</button>
-                </span>
-                <small class="form-text" id="error-message">Chat codes are 5-7 characters including letters and numbers, and have no spaces or symbols</small>
-            </form>
-        </div>
-        <div class="join-condition">
-            <h3>To sign in with a chat code</h3>
-            <ul class="form-text">
-                <li>Use an authorised account</li>
-                <li>Use a class code with 5-7 letters or numbers, and no spaces or symbols</li>
-            </ul>
-            <small class="form-text text-muted">If you have trouble joining the chat, go to the <i>Help Center article</i></small>
-        </div>
-    </div>
+    </section>
+    
 </body>
+<script src="../public/default.js"></script>
 <script>
 function checkChatcode(){
     let condition = chatCodeTest(document.getElementById("key").value);

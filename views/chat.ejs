@@ -7,49 +7,63 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../public/style.css"/>
+    <link rel="icon" href="../image/logo.png"/>
 </head>
+<style>
+    body{
+        overflow-y: hidden;
+    }
+</style>
 <body>
     <section class="chat-console">
         <header>
             <div class="flx">
-                <img src="../image/avater-7.png"alt="loading.."/>
+                <img src="../image/logo.png"alt="loading.."/>
                 <h4><%= roomName %></h4><span>(<%= key %>)</span>
             </div>
-            <div class="btn btn-secondary"><i class="fa fa-share"></i> Share Link</div>
+            <div class="menu">
+                <img src="../image/avater-7.png" alt="loading.."/>
+                <div class="btn" onclick="invalid();"><i class="fa fa-ellipsis-v"></i></div>
+            </div>
         </header>
         <div id="chat-box"></div>
         <form id="chat-form">
-            <input type="text" class="form-controler" id="message" placeholder="Message here" required/>
-            <button class="btn btn-primary" type="submit"><i class="fa fa-send"></i> Send</button>
+            <textarea type="text" row="3" class="form-controler" id="message" placeholder="Message here" required></textarea>
+            <button type="submit" class="send">
+                <div class="circle">
+                    <i class="fa fa-send"></i>
+                </div>
+            </button>
         </form>
     </section>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
+<script src="../public/default.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
 
-        socket.emit('join', '<%= key %>');
+    socket.emit('join', '<%= key %>');
 
-        const chatForm = document.getElementById('chat-form');
-        const messageInput = document.getElementById('message');
-        const chatBox = document.getElementById('chat-box');
+    const chatForm = document.getElementById('chat-form');
+    const messageInput = document.getElementById('message');
+    const chatBox = document.getElementById('chat-box');
 
-        chatForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const message = messageInput.value;
-            socket.emit('message', { key: '<%= key %>', message });
-            messageInput.value = '';
-        });
+    chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const message = messageInput.value;
+        socket.emit('message', { key: '<%= key %>', message });
+        messageInput.value = '';
+    });
 
-        socket.on('message', (message) => {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add("myMessage");
-            messageElement.innerHTML = `
-            <div class="userDp">
-                <img src="../image/avater-7.png" alt="loading.."/>
-            </div>
-            <div class="messageStr">${message}</div>`;
-            chatBox.appendChild(messageElement);
-        });
-    </script>
+    socket.on('message', (message) => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add("myMessage");
+        messageElement.innerHTML = `
+        <div class="userDp">
+        <img src="../image/avater-7.png" alt="loading.."/>
+        </div>
+        <div class="messageStr">${message}</div>`;
+        chatBox.appendChild(messageElement);
+    });
+</script>
 </body>
 </html>
