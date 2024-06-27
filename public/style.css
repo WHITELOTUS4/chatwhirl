@@ -18,7 +18,7 @@ body{
     display: flex;
     flex-direction: row;
 }
-.join-in-box{
+.join-in-box,.create-in-box{
     width: 40%;
     background: var(--bg-color);
     box-shadow: 0px 1px 4px 2px grey;
@@ -26,26 +26,26 @@ body{
     padding: 10px;
     margin: 10% auto 0% auto;
 }
-.join-in-box h1{
+.join-in-box h1,.create-in-box h1{
     font-size: 18px;
     margin: 5px 0px;
 }
-.join-in-box .join-box{
+.join-in-box .join-box,.create-in-box .join-box{
     border: 1px solid grey;
     border-radius: 5px;
     padding: 8px;
     margin: 10px 0px;
 }
-.join-in-box .join-box .user-img{
-    width: 5%;
+.join-in-box .join-box .user-img,.create-in-box .join-box .user-img{
+    width: 6%;
     overflow: hidden;
 }
-.join-in-box .join-box .user-img img{
+.join-in-box .join-box .user-img img,.create-in-box .join-box .user-img img{
     position: relative;
     width: 100%;
     margin-top: 4px;
 }
-.join-in-box .join-box .user-name{
+.join-in-box .join-box .user-name,.create-in-box .join-box .user-name{
     width: 90%;
     font-size: 14px;
     font-weight: bold;
@@ -53,10 +53,16 @@ body{
     flex-direction: column;
     padding-left: 10px;
 }
-.join-in-box .join-box .user-name .join-id{
+.join-in-box .join-box .user-name .join-id,.create-in-box .join-box .user-name .join-id{
     color: grey;
     font-size: 12px;
     font-weight: normal;
+}
+.user-left{
+    width: 80%;
+}
+.user-right{
+    width: 20%;
 }
 .join-in-box .join-box form label,.join-condition h3{
     font-size: 14px;
@@ -93,10 +99,39 @@ body{
     font-style: normal;
     text-decoration: underline;
 }
-.join-box #error-message{
+.join-box #error-message,.create-box #error-message{
     margin: 8px 0px 2px 2px;
     color: red;
     display: none;
+}
+.create-in-box .create-box{
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 10px 0px;
+}
+.create-in-box .create-box input,.create-in-box .create-box select{
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+    border: 0px solid transparent;
+    border-bottom: 2px solid grey;
+    color: grey;
+    margin-bottom: 10px;
+    outline: none;
+}
+.create-in-box .create-box input:hover{
+    border: 0px solid transparent;
+    border-bottom: 2px solid var(--loader-font);   
+}
+.create-in-box .flw{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+.create-in-box .flw button{
+    margin-right: 5px;
 }
 .chat-console{
     width: 100%;
