@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatWhirl</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../public/style.css"/>
+    <link rel="icon" href="../image/logo.png"/>
+</head>
+<body>
+    <section class="join-chat">
+        <header>
+            <div class="flx">
+                <img src="../image/logo.png"alt="loading.."/>
+                <h4><%= APPName %></h4>
+            </div>
+            <div class="menu">
+                <img src="../image/avater-7.png" alt="loading.."/>
+                <div class="btn" onclick="invalid();"><i class="fa fa-ellipsis-v"></i></div>
+            </div>
+        </header>
+        <div class="create-in-box">
+            <h1>Create Chat</h1>
+            <div class="join-box flx">
+                <div class="user-left flx">
+                    <div class="user-img"><img src="../image/avater-7.png"alt="loading"/></div>
+                    <div class="user-name">
+                        <span><%= UserName %></span>
+                        <span class="join-id"> <%= ip %> </span>
+                    </div>
+                </div>
+                <div class="user-right">
+                    <button class="btn btn-outline-primary" onclick="invalid();">My Account</button>
+                </div>
+            </div>
+            <div class="create-box">
+                <form action="/main" method="get">
+                    <input type="text" class="form-controler" id="roomName" name="roomName" placeholder="Room Name" title="Select your Room name" required/>
+                    <!-- <select class="form-controler">
+                        <option>Family/Friend Interaction</option>
+                        <option>Offecial Interaction</option>
+                        <option selected="true">Personal Interaction</option>
+                        <option>Others</option>
+                    </select> -->
+                    <input type="password" class="form-controler" id="password" name="password" placeholder="Password" title="Create an one time password" required/>
+                    <input type="password" class="form-controler" id="Cpassword" name="Cpassword" placeholder="Conform Password" title="Conform the one time password" required/>
+                    <small class="form-text" id="error-message">Please fill the above filed carefully as per grammer.</small>
+                </form>
+            </div>
+            <div class="join-condition">
+                <small class="form-text text-muted">I am already accept all <i>Terms and Condition</i>.</small>
+            </div>
+            <div class="flw">
+                <button type="clear" class="btn btn-secondary" id="join-chat-btn">Already have a room</button>
+                <button type="submit" class="btn btn-primary" id="creat-btn">Create</button>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../public/default.js"></script>
+</html>

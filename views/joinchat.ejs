@@ -24,10 +24,15 @@
         <div class="join-in-box">
             <h1>Join Chat</h1>
             <div class="join-box flx">
-                <div class="user-img"><img src="../image/avater-7.png"alt="loading"/></div>
-                <div class="user-name">
-                    <span>Krish</span>
-                    <span class="join-id"> <%= ip %> </span>
+                <div class="user-left flx">
+                    <div class="user-img"><img src="../image/avater-7.png"alt="loading"/></div>
+                    <div class="user-name">
+                        <span><%= UserName %></span>
+                        <span class="join-id"> <%= ip %> </span>
+                    </div>
+                </div>
+                <div class="user-right">
+                    <button class="btn btn-outline-primary" onclick="invalid();">My Account</button>
                 </div>
             </div>
             <div class="join-box">
