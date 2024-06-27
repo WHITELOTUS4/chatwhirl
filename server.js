@@ -4,9 +4,12 @@ const https = require('https');
 const fs = require('fs');
 const socketIo = require('socket.io');
 const path = require('path');
+const { render } = require('ejs');
 require('dotenv').config();
 
 const app = express();
+const APPName = "Chat Whirl";
+const UserName = "Krish";
 const isHttps = process.env.HTTPS === 'true';
 // Load SSL certificates if HTTPS is enabled
 let server;
@@ -42,16 +45,41 @@ app.use((req,res,next) => {
 });
 
 app.get('/', (req, res) => {
-    res.render('joinchat',{ip: req.userIp});
+    res.redirect('/join');
+});
+
+app.get('/create', (req, res) => {
+    res.render('creatchat',{ip: req.userIp, APPName, UserName});
+});
+
+app.get('/join', (req, res) => {
+    res.render('joinchat',{ip: req.userIp, APPName, UserName});
 });
 
 app.get('/chat', (req, res) => {
     const { key } = req.query;
-    if (!key) {
+    if(!key){
         return res.redirect('/');
     }
-    let roomName = "White Chat";
-    res.render('chat', { key , roomName});
+    const requirements = [
+		{regex: /.{7,}/, index: 0},
+		{regex: /[0-9]/, index: 1},
+		{regex: /[a-z]/, index: 2},
+		{regex: /[A-Z]/, index: 3}
+	];
+    let requirementItem=0;
+	requirements.forEach((item)=>{
+		let isValid = item.regex.test(key);
+		if(isValid){
+			requirementItem++;	
+		}
+	});
+    if(requirementItem >= requirements.length && key.length<=7 && key.length>=5){
+        let roomName = APPName;
+        res.render('chat', { key , roomName});
+    }else{
+        return res.redirect('*');
+    }
 });
 
 app.get('*', (req, res) => {
