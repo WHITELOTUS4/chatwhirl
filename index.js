@@ -1,27 +1,16 @@
 const express = require('express');
 const http = require('http');
-const https = require('https');
 const fs = require('fs');
+const bodyParser = require('body-parser');
 const socketIo = require('socket.io');
 const path = require('path');
-const { render } = require('ejs');
+const ejs = require('ejs');
 require('dotenv').config();
 
 const app = express();
 const APPName = "Chat Whirl";
 const UserName = "Krish";
-const isHttps = process.env.HTTPS === 'true';
-// Load SSL certificates if HTTPS is enabled
-let server;
-// if (isHttps) {
-//     const options = {
-//         key: fs.readFileSync('key.pem'),
-//         cert: fs.readFileSync('cert.pem')
-//     };
-//     server = https.createServer(options, app);
-// } else {
-    server = http.createServer(app);
-// }
+const server = http.createServer(app);
 
 const io = socketIo(server);
 
@@ -32,15 +21,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/image',express.static(path.join(__dirname,'image')));
 app.use('/public',express.static(path.join(__dirname,'public')));
 
-app.use((req,res,next) => {
-    let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || req.connection.remoteAddress || null;
-    if(ip.includes('::ffff:')){
-        ip = ip.split('::ffff:')[1];
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use((req, res, next) => {
+    try{
+        let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || req.connection.remoteAddress || null;
+        if(ip.includes('::ffff:')){
+            ip = ip.split('::ffff:')[1];
+        }
+        if(ip=='::1'){
+            ip = "127.0.0.1:"+PORT;
+        }
+        req.userIp = ip;
+    }catch(e){
+        console.log("Error to execute middleware!");
     }
-    if(ip=='::1'){
-        ip = "127.0.0.1:"+PORT;
-    }
-    req.userIp = ip;
     next();
 });
 
@@ -95,6 +91,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('message', ({ key, message }) => {
+        console.log('A user message ',message);
         io.to(key).emit('message', message);
     });
 
@@ -106,7 +103,7 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, (err) => {
     if(err) console.log("Oops an error occure:  "+err);
-    console.log(`Compiled successfully!\n\nYou can now view ./${path.basename(__filename)} in the browser.`);
+    console.log(`Compiled successfully!\n\nYou can now view \x1b[33m./${path.basename(__filename)}\x1b[0m in the browser.`);
     console.info(`\thttp://localhost:${PORT}`);
-    console.log("\nNode web compiled!\n");
+    console.log("\n\x1b[32mNode web compiled!\x1b[0m \n");
 });
