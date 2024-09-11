@@ -9,11 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/",
-      "methods": ["GET", "POST", "WEBHOOK"]
-    },
-  ],
-  "websocket": {
-    "enabled": true
-  }
+      "dest": "/"
+    }
+  ]
 }
