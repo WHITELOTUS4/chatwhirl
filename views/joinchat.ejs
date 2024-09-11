@@ -6,14 +6,14 @@
     <title>ChatWhirl</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../public/style.css"/>
-    <link rel="icon" href="../image/logo.png"/>
+    <link rel="stylesheet" href="../public/App.css"/>
+    <link rel="icon" href="../public/favicon.ico"/>
 </head>
 <body>
     <section class="join-chat">
         <header>
             <div class="flx">
-                <img src="../image/logo.png"alt="loading.."/>
+                <img src="../public/favicon.ico"alt="loading.."/>
                 <h4><%= APPName %></h4>
             </div>
             <div class="menu">
@@ -50,7 +50,7 @@
                 <h3>To sign in with a chat code</h3>
                 <ul class="form-text">
                     <li>Use an authorised account</li>
-                    <li>Use a class code with 5-7 letters or numbers, and no spaces or symbols</li>
+                    <li>Use a chat code with 5-7 letters or numbers, and no spaces or symbols</li>
                 </ul>
                 <small class="form-text text-muted">If you have trouble joining the chat, go to the <i>Help Center article</i></small>
             </div>
@@ -58,7 +58,7 @@
     </section>
     
 </body>
-<script src="../public/default.js"></script>
+<script src="../public/App.js"></script>
 <script>
 function checkChatcode(){
     let condition = chatCodeTest(document.getElementById("key").value);
