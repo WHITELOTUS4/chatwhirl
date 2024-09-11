@@ -1,5 +1,5 @@
 {
-  "name": "chat-application",
+  "name": "chatwhirl",
   "version": "1.0.0",
   "description": "A simple chat application using Node.js, Express, Socket.io, and EJS",
   "main": "index.js",
