@@ -2,10 +2,10 @@
   "name": "chat-application",
   "version": "1.0.0",
   "description": "A simple chat application using Node.js, Express, Socket.io, and EJS",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "build": "ejs-cli views/ -o build/",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "author": "Krishnendu Mitra",
   "license": "ISC",
