@@ -31,7 +31,7 @@
                 <div class="userDp">
                     <img src="../public/favicon.ico" alt="loading..">
                 </div>
-                <div class="messageStr">Wecome to ChatWhirl</div>
+                <div class="messageStr">Welcome to ChatWhirl</div>
             </div>
         </div>
         <form id="chat-form">
@@ -58,6 +58,7 @@
         chatForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const message = messageInput.value;
+            alert(message);
             socket.emit('message', { key: '<%= key %>', message });
             messageInput.value = '';
         });
