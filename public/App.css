@@ -314,6 +314,7 @@ body{
     }
     .user-right{
         width: 40%;
+        text-align: right;
     }
     .join-in-box{
         width: 90%;
@@ -324,10 +325,12 @@ body{
     }
     .join-in-box .join-box form input{
         margin-bottom: 4px;
+        width: 200px;
     }
     .chat-console #chat-box{
         width: 100%;
-        height: 500px;
+        /* height: 500px; */
+        height: 76vh;
     }
     .chat-console header .menu,.join-chat header .menu{
         width: 15%;
