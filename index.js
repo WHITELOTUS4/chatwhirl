@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-const socketIo = require('socket.io');
+const socketIo = require('./modules/socket.io');
 const path = require('path');
 const ejs = require('ejs');
 require('dotenv').config();
